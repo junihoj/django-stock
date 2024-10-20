@@ -45,7 +45,7 @@ jobs:
             DEBUG=${{secrets.DEBUG}}
 
   deploy:
-    needs: build # This ensures that the deploy job runs after the build job
+    needs: build # (needs build This ensures that the deploy job runs after the build job)
     runs-on: ubuntu-latest
 
     steps:
