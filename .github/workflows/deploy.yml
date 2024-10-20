@@ -51,13 +51,19 @@ jobs:
     steps:
       # Step 1: Trigger deployment on Render
       - name: Deploy to Render
-        env:
-          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
-          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-        run: |
-          curl -X POST \
-            -H "Authorization: Bearer $RENDER_API_KEY" \
-            -H "Accept: application/json" \
-            -H "Content-Type: application/json" \
-            -d '{"clearCache": true}' \
-            https://api.render.com/v1/services/$RENDER_SERVICE_ID/deploys
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
+          wait-for-success: true
+      # - name: Deploy to Render
+      #   env:
+      #     RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+      #     RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+      #   run: |
+      #     curl -X POST \
+      #       -H "Authorization: Bearer $RENDER_API_KEY" \
+      #       -H "Accept: application/json" \
+      #       -H "Content-Type: application/json" \
+      #       -d '{"clearCache": true}' \
+      #       https://api.render.com/v1/services/$RENDER_SERVICE_ID/deploys
