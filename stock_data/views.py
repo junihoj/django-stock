@@ -117,3 +117,7 @@ def generate_report_view(request, symbol):
     buffer.seek(0)
 
     return FileResponse(buffer, as_attachment=True, filename="report.pdf")
+
+
+def health_check(request):
+    return JsonResponse({"HEALTH": "Oks"})
