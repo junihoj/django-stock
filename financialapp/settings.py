@@ -37,9 +37,9 @@ ALPHA_VANTAGE_API_KEY = env("ALPHA_VANTAGE_API_KEY")
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-m5i4t^z$s)3y$1iow9a$8%=&qlon-ud#c2&yo5$++8@v2y98xw'
 SECRET_KEY = env("SECRET_KEY")
-
+print("PRINT", env.db())
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", default=False)
+DEBUG = env.bool("DEBUG", default=True)
 
 ALLOWED_HOSTS = ["*"]
 
